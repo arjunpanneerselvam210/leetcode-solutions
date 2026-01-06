@@ -12,4 +12,5 @@ public:
     }
 };
 
-//
+// first find the number of frequencies using the unordered map to avoid sorting to reduce time complexity
+// then insert the frequencies to the set to find the duplicate occurences and return the size
