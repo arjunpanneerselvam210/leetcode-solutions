@@ -1,0 +1,14 @@
+class Solution {
+public:
+    string removeTrailingZeros(string num) {
+        int n = num.size();
+        int i = n-1;
+        for( ; i >= 0; i--)
+            if(num[i] != '0')   break;
+        return num.substr(0,i+1);
+    }
+};
+// declare the iterating variable outside the loop
+// iterating the String from last 
+// when i see a Non Zero Number i will Break the loop
+// return the string using substr() from index 0 to i the substring will take the last index as i+1 instead of i in syntax;
