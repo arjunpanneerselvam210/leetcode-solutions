@@ -12,3 +12,11 @@ public:
        return -1;
     }
 };
+// first find all the prefix sum inside the given array to reduce the space
+// then declare a variable total sum and assign the cummulative sum of the elements in the array
+// iterate the array and find the value for left and right
+// left should be checked for the edge cases like 'what if the pivot is found in the 0'th index 
+// if not you can assign the arr[n-1] value to left
+// then assign the totalsum - nums[i] to dynamically find the values of left and right
+// then check left and right are equall if not continue this process
+// if no value is return inside the loop return -1 atlast
