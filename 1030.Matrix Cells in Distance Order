@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<int>> allCellsDistOrder(int rows, int cols, int rc, int cc) {
+        multimap<int,pair<int,int>>mat;
+        vector<vector<int>> res;
+        for(int i = 0;i < rows ; i++){
+            for(int j = 0; j< cols ; j++)
+                mat.insert({(abs(rc - i) + abs(cc - j)),{i,j}});
+        }
+        for(auto i : mat)
+            res.push_back({i.second.first,i.second.second});
+        return res;
+    }
+};
+// i have used nested multimap with pairs
+// the mulitmap is used to sort the distance using the key and the pairs are used to store the index of the particular cell
+// then insert the keys and indices of the cell to the map
+// insert the result to the resultant matrix to return it
