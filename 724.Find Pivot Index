@@ -1,17 +1,17 @@
 class Solution {
 public:
     int pivotIndex(vector<int>& nums) {
-        int n = nums.size();
-        for(int i = 1 ;i <n; i++)
-            nums[i] = nums[i-1] + nums[i];
-        int totalsum = nums[n-1];
-        for(int i=0;i<n;i++){
-            int left = (i == 0)? 0 : nums[i-1];
-            int right = totalsum - nums[i];
-            if(left == right) return i;
-        }
-        return -1;
+       int n = nums.size();
+       int sum = accumulate(nums.begin(),nums.end(),0);
+       int right = 0,left =0;
+       for(int i=0; i<n;i++){
+            right = sum - left - nums[i];
+            if(left == right)   return i;
+            left+=nums[i];
+       }
+       return -1;
     }
+};
 };
 // first find all the prefix sum inside the given array to reduce the space
 // then declare a variable total sum and assign the cummulative sum of the elements in the array
