@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<vector<int>> mergeSimilarItems(vector<vector<int>>& items1, vector<vector<int>>& items2) {
+        int n = items1.size();
+        int m = items2.size();
+        map<int,int>mp;
+        for(auto i : items1)
+            mp[i[0]] = i[1];
+        for(auto i : items2)
+            mp[i[0]] += i[1];
+        vector<vector<int>>res;
+        for(auto i : mp)
+            res.push_back({i.first,i.second});
+        return res;
+    }
+};  
+//Data Structured Used : map,vector
+// map<value,weight> = <key,value>
+// i will iterate the first array and store the each elements first index ie i[0] is the value the value must be unique so it first create the key and assign the weight to it
+// then i will iterate second array to store the elements if not exist in the first array and if no i will added to the already existed weight
+// then push the result into the vector as {key,weight} inside the vector and return it
