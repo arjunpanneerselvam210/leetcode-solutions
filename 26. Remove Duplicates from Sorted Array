@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        set<int>res(nums.begin(),nums.end());
+        int n = res.size();
+        int j = 0;
+        for(auto i : res){
+            nums[j] = i;
+            j++;
+        }
+        return n;
+    }
+};
+// insert the nums into the set to get the sorted and distinct elements
+// store the size of the set for return the size
+// iterate the set using iterator and another variable for pointer
+// store the iterator value to the given array using the pointer
+// return the size after complete the iteration
+
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> res;
+        res.push_back(nums[0]);
+        for(int i = 1;i < n ; i++){
+            if(nums[i] != nums[i-1]) res.push_back(nums[i]);
+        }
+        int m = res.size();
+        for(int i = 0; i< m ; i++){
+            nums[i] = res[i];
+        }
+        return m;
+    }
+};
+// add the 0th ekement to the result array
+// compare the current element to its previous element if it is not equal then push it into the new array
+// then store the size of the result array 
+// reassign the values inside the result array to the given array
+// return the result array size
