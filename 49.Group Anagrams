@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string,vector<string>>mp;
+        int n = strs.size();
+        for(auto &i : strs){
+            string s = i;
+            sort(s.begin(),s.end());
+            mp[s].push_back(i); 
+        }
+        vector<vector<string>>res;
+        for(auto &i : mp){
+            res.push_back(i.second);
+        }
+        return res;
+    }
+};
+// Data Structure : unordered_map , vector => unordered_map<string,vector<string>>mp
+// first you have to traverse the array of vectors and store the current string in another string
+// then you to sort the string then you have to insert it in the map using the sorted string as key and the current string as the value
+// then you have to check the next sorted string you have to repeat again and again
+// the unordered map doesnt allow duplicates and it only reassign the key and value if the string is already existed
+// then you have to add the resultant map(values) to the result array of vector and return it
