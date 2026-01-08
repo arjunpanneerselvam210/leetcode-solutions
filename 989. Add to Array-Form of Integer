@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> addToArrayForm(vector<int>& num, int k) {
+        vector<int>res;
+        int n = num.size() -1;
+        int carry = 0;
+        while((n!=-1) || carry || k != 0){
+            int sum = carry;
+            sum += (n != -1)? num[n--] : 0 ;
+            sum += k % 10;
+            k /= 10;
+            res.push_back(sum%10);
+            carry = sum / 10;
+        }
+        reverse(res.begin(),res.end());
+        return res;
+    }
+};
+// set carry to '0' for future carry
+// traverse the array from the last to 0 to add the digits
+// assign carry to sum and current array element is added to sum
+// mod the k by 10 to get the last digit and add it to the sum 
+// divide the key by 10 to remove the last digit 
+// add the result to the result array
+// repeat this process until the n becomes -1 , carry becomes 0 and then k not equal to 0
+// reverse the array and return it
