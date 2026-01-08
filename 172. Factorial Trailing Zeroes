@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int trailingZeroes(int n) {
+       int cnt = 0;
+       while(n >= 5){
+        cnt += n/5;
+        n /= 5;
+       }
+       return cnt;
+    }
+};
+// cnt is set to 0 to find the number of 5 present within the given number range 
+// n is divided by 5 and add the quotient value to the cnt
+// then divide n by 5 
+// continue this process until the n reaches 5
+// then return cnt
+
+// instead of generating the factorial number we just cnt the number of 5 contributed to the factorial number 
