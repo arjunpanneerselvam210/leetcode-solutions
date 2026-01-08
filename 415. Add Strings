@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int n = num1.size() -1;
+        int m = num2.size() -1;
+        int carry = 0;
+        string str = "";
+        while((n!=-1) || (m!=-1) || carry){
+            int sum = carry;
+            sum += (n != -1)? num1[n--] - '0' : 0 ;
+            sum += (m != -1)? num2[m--] - '0' : 0 ;
+            str += (sum % 10) + '0';
+            carry = sum / 10;
+        }
+        reverse(str.begin(),str.end());
+        return str;
+    }
+};
+// first i have initialized carry and assigned it to 0 to handle the future carry 
+// declate a str as empty to concatnate the result while adding the digits
+// i will assign the carry to sum and convert the current char from s1 and s2 to int and add it to the sum
+// before adding the numbers i will check if the string is empty or not if it is empty it will leads to error (if empty return 0)
+// i will mod the sum to get the last digit and convert it to string and concatnate it to the string
+// reverse the string and return it
+
