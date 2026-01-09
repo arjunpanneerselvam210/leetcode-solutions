@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        int n = nums.size();
+        vector<int>pos;
+        vector<int>neg;
+        for(auto i = 0;i <n; i++){
+            if(nums[i]<0)   neg.push_back(nums[i]);
+            if(nums[i]>0)   pos.push_back(nums[i]);
+        }
+        nums.clear();
+        int m = pos.size();
+        for(auto i = 0; i<m; i++){
+            nums.push_back(pos[i]);
+            nums.push_back(neg[i]);
+        }
+        return nums;
+    }
+};
+// this is brute force approach
+// first you have to iterate from 0 to n-1 
+// then check if the current element is pos or not if pos add concatnate it to pos array else neg array(check if it is neg else may pass the condition for 0
+// zero is neither pos nor neg
+// then erase the given array
+// find the size for any of the pos or neg because both are in same size
+// push the pos arrays current element and next neg array current element you have to do this upto m-1
+// return the result array
