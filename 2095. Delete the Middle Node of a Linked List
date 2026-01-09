@@ -1,0 +1,38 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteMiddle(ListNode* head) {
+        if(head -> next == nullptr) return nullptr;
+        int cnt = 0;
+        ListNode *temp = head;
+        while(temp){
+            cnt++;
+            temp = temp -> next;
+        }
+        temp = head;
+        for(int i=1;i < cnt/2;i++){
+            temp = temp->next;
+        }
+        ListNode *delNode = temp->next;
+        temp -> next = delNode -> next;
+        return head;
+    }
+};
+// to delete the middle node in the linked list first you have to find the no of nodes in list
+// you cant directly find the no of nodes in the list you have to traverse the entire and maintain a count for it
+// when you reach the last node you will find the count
+// Before that you have to check this condition if the list is empty or not and if the list one or two element
+// if you have one you delete that node and return null if list contain two nodes you will delete the second node and return the first node
+// you have to iterate a node pointer upto count/2 - 1 it will point the before the node to be deleted
+// then you will create a delnode pointer to delete the middle node
+// you just change the iterator pointers->next equals delNode->next
+// then you will return the head
