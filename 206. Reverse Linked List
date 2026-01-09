@@ -23,4 +23,11 @@ public:
     }
 };
 // first you have to check if the head is null if it is null it has no element in the linked list 
-// ehtn 
+// if not then the linked list contains more than one node in the list
+// you have to maintain three pointers to keep the track of the to reverse it
+// at first the curr will point the head
+// then the prev and nextnode will point nullptr
+// then you have to point the nextnode to the curr of next then curr->next equals prev then prev equals curr
+// then curr equals nextnode
+// you have to repeat this process until the curr reaches the last node in the list then the curr will point nullptr
+// the you have to return the prev because it will point he last node that is reversed then the prev will be the head
