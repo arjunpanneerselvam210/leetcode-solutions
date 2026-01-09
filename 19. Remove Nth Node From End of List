@@ -1,0 +1,35 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if(!(head -> next) && n == 1) return nullptr;
+        ListNode *temp = head;
+        int cnt = 0;
+        while(temp){
+            temp = temp -> next;
+            cnt++;
+        }
+        if(cnt == n)    return head->next;
+        temp = head;
+        for(int i = 1 ; i < cnt - n;i++)
+            temp = temp -> next;
+        ListNode *delNode = temp->next;
+        temp->next = delNode -> next;
+        return head;
+    }
+};
+// if you want to delete the nth node in a linked list first you have to know the no of nodes in the linked list
+// check if the node contains one node and if n is 1 then remove the node
+// check if the node contains m elements and if m is equals to n then return the next node of head
+// if these condition fails then using a iterate the node upto cnt - n -1 now the pointer will points before the node to be deleted
+// then assign the temp -> next = prev -> next it will remove the nth node in the list
+// return the head
