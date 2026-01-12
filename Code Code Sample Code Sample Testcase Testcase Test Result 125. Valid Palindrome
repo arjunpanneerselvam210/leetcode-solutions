@@ -15,7 +15,7 @@ public:
 Approach : Two Pointers
 // first point the i at the starting of the string
 // then point the j at the ending of the string
-// then i will move continuously until it reaches the non-alphanumeric character
+// then i will move continuously until it reaches the alphanumeric character
 // repeat the same for j in opposite direction
 // then check char of i and char of j equal if not then return false otherwinse continue
 // then increment i and decrement j
