@@ -1,0 +1,53 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+        while(i >= 0 && j >= 0){
+            if(nums1[i] >= nums2[j])    
+                nums1[k--] = nums1[i--];
+            else    
+                nums1[k--] = nums2[j--];
+        }
+        while(j >= 0)
+            nums1[k--] = nums2[j--];
+    }
+};
+// you have to maintain three pointer for array1 and array2 and array3 that is stored in array1 without override it
+// i will point the array1's last index
+// j will point the array2's last index
+// k will point the result arrays size ie sum of the array1 and array2
+// compare the array1 current element and array2 current element if it is greater than or equal means sort the array1's kth position because it doesnt contain any elements in the kth pos
+// otherwise store the array2's current element in the k pos of array1's
+// you have to repeat this process until the any of the arrays pointer reaches 0
+// then check if any of the elements present in the array2 
+
+
+// Not Optimal
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int>res;
+        int i = 0,j = 0;
+        while(i<m && j<n){
+            if(nums1[i] <= nums2[j])
+                res.push_back(nums1[i++]);
+            else
+                res.push_back(nums2[j++]);
+        }
+        while(i<m)
+            res.push_back(nums1[i++]);
+        while(j<n)
+            res.push_back(nums2[j++]);
+        for(int i =0 ;i<n+m;i++)
+            nums1[i] = res[i];
+    }
+};
+// Approach : Two Pointer Approach using O(m+n) space Not optimal
+// point the pointers at the starting of the array
+// then compare the current element if first is less than or equal add element in first array to vector
+// otherwise add the second array element
+// then continue until any of the array completely pushed into the array
+// then check for any elements present in any of the array
+// then copy the elements of the resultant array to the first array
