@@ -5,7 +5,7 @@ public:
         vector<vector<int>> res;
         for(int i = 0;i < rows ; i++){
             for(int j = 0; j< cols ; j++)
-                mat.insert({(abs(rc - i) + abs(cc - j)),{i,j}});
+                mat.insert({(abs(rc - i) + abs(cc - j)),{i,j}}); 
         }
         for(auto i : mat)
             res.push_back({i.second.first,i.second.second});
