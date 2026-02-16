@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int reverseBits(int n) {
+        string s = "";
+        int cnt = 32;
+        while(cnt--){
+            if(n){
+                s += to_string(n % 2);
+                n/=2;
+            }
+            else    s += '0';
+        }
+        int res = 0;
+        for(int i = 31; i >= 0; i--){
+            if(s[i] == '1') res += pow(2,31-i);
+        }    
+        return res;
+    }
+};
