@@ -1,0 +1,17 @@
+class Solution {
+    public int AtmostK(int[] arr,int k){
+        if(k < 0) return 0;
+        int n = arr.length, l = 0, sum = 0,res = 0;
+        for(int r = 0 ; r < n ; r++){
+            sum += arr[r];
+            while(sum > k && l < n){
+                sum -= arr[l++];
+            }
+            res += r-l+1;
+        }
+        return res;
+    }
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        return AtmostK(nums,goal) - AtmostK(nums,goal-1);
+    }
+}
