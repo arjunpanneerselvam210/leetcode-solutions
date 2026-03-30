@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        int n = points.size();
+        multimap<double, pair<int,int>> mp ;
+        for(int i = 0 ; i < n ; i++){
+            double val = (double)sqrt(points[i][0] * points[i][0] + points[i][1] * points[i][1]);
+            mp.insert({val , {points[i][0],points[i][1]}});
+        }
+        vector<vector<int>> res;
+        int i = 0;
+        for(auto val : mp){
+            if(i == k)  break;
+            res.push_back({val.second.first , val.second.second});
+            i++;
+        }
+        return res;
+    }
+};
